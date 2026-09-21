@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,49 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+      
+        <header className="border-b border-gray-200 bg-white shadow-sm">
+          <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+            <h1 className="text-2xl font-bold text-blue-600">
+              My App
+            </h1>
+
+            <ul className="flex items-center gap-2">
+              <li>
+                <Link
+                  href="/"
+                  className="rounded-lg px-4 py-2 font-medium text-gray-700 transition hover:bg-blue-50 hover:text-blue-600"
+                >
+                  Home
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/clientComponent"
+                  className="rounded-lg px-4 py-2 font-medium text-gray-700 transition hover:bg-blue-50 hover:text-blue-600"
+                >
+                  cliente components
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/products"
+                  className="rounded-lg px-4 py-2 font-medium text-gray-700 transition hover:bg-blue-50 hover:text-blue-600"
+                >
+                  Products
+                </Link>
+              </li>
+              
+            </ul>
+          </nav>
+        </header>
+        
+
+        {children}
+      </body>
     </html>
   );
 }
